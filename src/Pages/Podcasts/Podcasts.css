@@ -1,0 +1,12 @@
+.podcasts-container {
+    align-items: flex-start;
+}
+
+.podcasts-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}

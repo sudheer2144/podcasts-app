@@ -1,0 +1,26 @@
+.episode-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3ms;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    width: 100%;
+    background: linear-gradient(177.7deg,
+            rgba(41, 91, 135, 0.3) 1.63%,
+            rgba(65, 48, 90, 0.009) 148.18%);
+}
+
+.episode-card .submitBtn {
+    width: fit-content;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.episode-card p {
+    margin-top: 0.2rem;
+}
