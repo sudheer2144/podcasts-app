@@ -61,10 +61,10 @@ export const App = () => {
           ) : (
             <Route path="/" element={<SignUpPage />} />
           )}
-          <Route path="/podcasts" element={<Podcasts />} />
           <Route path="" element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-podcast" element={<CreatePodcast />} />
+            <Route path="/podcasts" element={<Podcasts />} />
             <Route path="/podcast/:id" element={<PodcastDetails />} />
             <Route
               path="/podcast/:id/create-episode"
