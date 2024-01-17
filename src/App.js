@@ -7,7 +7,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./Slices/userSlice";
-import { useAuthState } from "react-firebase-hooks/auth"
+import { useAuthState } from "react-firebase-hooks/auth";
 import PrivateRoutes from "./PrivateRoutes";
 import { ToastContainer } from "react-toastify";
 import CreatePodcast from "./Pages/CreatePodcast/CreatePodcast";
@@ -23,27 +23,24 @@ export const App = () => {
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-
     if (user) {
       onSnapshot(
         doc(db, "users", user.uid),
         (userDoc) => {
           if (userDoc.exists()) {
             const userData = userDoc.data();
-            dispatch(
-              setUser(userData)
-            );
+            dispatch(setUser(userData));
           }
         },
         (error) => {
           console.error("Error fetching user data:", error.message);
-        });
+        }
+      );
     }
-
   }, [user]);
 
   if (loading) {
-    return <Loader />
+    return <Loader />;
   }
 
   return (
@@ -59,17 +56,23 @@ export const App = () => {
         />
         <Header user={user} />
         <Routes>
-          {user ? <Route path="/" element={<Podcasts />} /> : <Route path="/" element={<SignUpPage />} />}
+          {user ? (
+            <Route path="/" element={<Podcasts />} />
+          ) : (
+            <Route path="/" element={<SignUpPage />} />
+          )}
+          <Route path="/podcasts" element={<Podcasts />} />
           <Route path="" element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-podcast" element={<CreatePodcast />} />
-            <Route path="/podcasts" element={<Podcasts />} />
             <Route path="/podcast/:id" element={<PodcastDetails />} />
-            <Route path="/podcast/:id/create-episode" element={<CreateEpisode />} />
+            <Route
+              path="/podcast/:id/create-episode"
+              element={<CreateEpisode />}
+            />
           </Route>
         </Routes>
       </div>
     </BrowserRouter>
   );
-}
-
+};
